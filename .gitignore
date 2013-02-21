@@ -17,6 +17,7 @@
 /.esd_auth
 /.netrc
 /.bash_logout
+/.zcompdump
 
 /.xmonad/*
 !/.xmonad/xmonad.hs
