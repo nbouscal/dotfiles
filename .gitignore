@@ -21,6 +21,7 @@
 
 /.xmonad/*
 !/.xmonad/xmonad.hs
+/.cabal/
 /.cache/
 /.config/
 /.dbus/
@@ -28,6 +29,7 @@
 /.fontconfig/
 /.gconf/
 /.gem/
+/.ghc/
 /.gimp-2.8/
 /.gstreamer-0.10/
 /.heroku/
