@@ -18,6 +18,8 @@
 /.netrc
 /.bash_logout
 /.zcompdump
+/.Xauthority
+/.serverauth*
 
 /.xmonad/*
 !/.xmonad/xmonad.hs
