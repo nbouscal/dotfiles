@@ -1,6 +1,3 @@
-! Login shells only
-xterm*loginShell: true
-
 ! Solarized color scheme for the X Window System
 !
 ! http://ethanschoonover.com/solarized
