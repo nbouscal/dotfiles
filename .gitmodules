@@ -16,3 +16,6 @@
 [submodule ".antigen"]
     path = .antigen
     url = https://github.com/zsh-users/antigen.git
+[submodule ".vim/bundle/vim-zencoding"]
+	path = .vim/bundle/vim-zencoding
+	url = git://github.com/mattn/zencoding-vim.git
