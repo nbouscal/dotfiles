@@ -19,6 +19,7 @@ Movies/
 Music/
 Pictures/
 Public/
+quicklisp/
 .vim/tmp/
 .ssh/
 .rvm/
@@ -26,3 +27,6 @@ Public/
 .config/
 .subversion/
 .slime/
+.cache/
+.compass-ui/
+.swt/
