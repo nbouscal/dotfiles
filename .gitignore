@@ -30,3 +30,4 @@ quicklisp/
 .cache/
 .compass-ui/
 .swt/
+.vimgolf/

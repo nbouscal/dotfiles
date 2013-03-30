@@ -16,6 +16,7 @@ set laststatus=2
 set showcmd
 set cursorline
 set backspace=indent,eol,start
+set nrformats=
 set wildmenu
 set scrolljump=5
 set scrolloff=3
@@ -74,14 +75,13 @@ augroup vimrcEx
 augroup END
 
 " Keymaps
-let mapleader = ','
+" let mapleader = ','
 nnoremap <c-h> <c-w>h<c-w>_
 nnoremap <c-j> <c-w>j<c-w>_
 nnoremap <c-k> <c-w>k<c-w>_
 nnoremap <c-l> <c-w>l<c-w>_
 imap <c-c> <esc>
 nnoremap <leader><leader> <c-^>
-nnoremap ; :
 nnoremap Y y$
 
 function! MapCR()
