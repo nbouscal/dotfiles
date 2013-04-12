@@ -31,3 +31,17 @@ quicklisp/
 .compass-ui/
 .swt/
 .vimgolf/
+.ivy2/
+.sbt/
+.scala_history
+target/
+.freemind/
+.ghc/
+.lighttable/
+.cabal/
+.calibre_calibre GUI.lock
+.fontconfig/
+.Xauthority
+.dia-etc
+Sites
+VirtualBox VMs
