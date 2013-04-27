@@ -37,9 +37,9 @@ set ignorecase smartcase
 
 " Indentation
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 
 " Backup and undo storage
@@ -83,6 +83,14 @@ nnoremap <c-l> <c-w>l<c-w>_
 imap <c-c> <esc>
 nnoremap <leader><leader> <c-^>
 nnoremap Y y$
+
+nnoremap j gj
+nnoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
+
+nnoremap go o<Esc>k
+nnoremap gO O<Esc>j
 
 function! MapCR()
     nnoremap <cr> :nohlsearch<cr>
