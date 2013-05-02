@@ -1,9 +1,7 @@
 .CFUserTextEncoding
 .DS_Store
 .zcompdump
-.zsh_history
-.bash_history
-.irb-history
+*history
 .rvmrc
 .viminfo
 .recently-used
