@@ -18,6 +18,7 @@ set cursorline
 set backspace=indent,eol,start
 set nrformats=
 set wildmenu
+set wildmode=list,full
 set scrolljump=5
 set scrolloff=3
 filetype plugin indent on
@@ -37,9 +38,9 @@ set ignorecase smartcase
 
 " Indentation
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 
 " Backup and undo storage
@@ -75,7 +76,7 @@ augroup vimrcEx
 augroup END
 
 " Keymaps
-" let mapleader = ','
+let mapleader = ','
 nnoremap <c-h> <c-w>h<c-w>_
 nnoremap <c-j> <c-w>j<c-w>_
 nnoremap <c-k> <c-w>k<c-w>_
