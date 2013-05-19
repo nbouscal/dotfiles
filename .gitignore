@@ -43,3 +43,10 @@ target/
 .dia-etc
 Sites
 VirtualBox VMs
+.DbSchema/
+.lesshst
+.pearrc
+.pgadmin_histoqueries
+.pgpass
+.rnd
+pgadmin.log
