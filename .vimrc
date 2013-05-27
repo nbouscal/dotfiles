@@ -1,9 +1,28 @@
 " This is Nathan Bouscal's .vimrc file
 
-call pathogen#infect()
+set nocompatible
+
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'wincent/Command-T'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-commentary'
+Bundle 'kana/vim-smartinput'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'sjl/gundo.vim'
+Bundle 'mattn/zencoding-vim'
 
 " Basic settings
-set nocompatible
 set hidden
 set history=1000
 set ruler
@@ -16,11 +35,14 @@ set laststatus=2
 set showcmd
 set cursorline
 set backspace=indent,eol,start
-set nrformats=
+set nrformats-=octal
 set wildmenu
 set wildmode=list,full
 set scrolljump=5
 set scrolloff=3
+set list listchars=tab:▸\ ,trail:·
+set autoread
+set fileformats+=mac
 filetype plugin indent on
 syntax on
 
@@ -37,11 +59,18 @@ set hlsearch
 set ignorecase smartcase
 
 " Indentation
+set autoindent
 set expandtab
 set tabstop=4
-set shiftwidth=4
 set softtabstop=4
-set autoindent
+set shiftwidth=4
+set shiftround
+
+autocmd filetype make setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype css setlocal ts=2 sts=2 sw=2 expandtab
 
 " Backup and undo storage
 set backup
@@ -77,13 +106,22 @@ augroup END
 
 " Keymaps
 let mapleader = ','
+
 nnoremap <c-h> <c-w>h<c-w>_
 nnoremap <c-j> <c-w>j<c-w>_
 nnoremap <c-k> <c-w>k<c-w>_
 nnoremap <c-l> <c-w>l<c-w>_
+
+nnoremap <silent> [b :bprevious<cr>
+nnoremap <silent> ]b :bnext<cr>
+nnoremap <silent> [B :bfirst<cr>
+nnoremap <silent> ]B :blast<cr>
+
 imap <c-c> <esc>
 nnoremap <leader><leader> <c-^>
 nnoremap Y y$
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
 nnoremap j gj
 nnoremap k gk
@@ -99,8 +137,13 @@ endfunction
 call MapCR()
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 map <leader>v :view %%
+
+map <Leader>u :GundoToggle<CR>
 
 " Command-T keymaps
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
@@ -115,17 +158,18 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
 map <leader>gr :topleft :split config/routes.rb<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 
-" Set up Racket REPL
-map <leader>m :w<cr>:!rlwrap /usr/local/racket/bin/racket -t "%" -l racket/base -i<cr><c-d>
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+    runtime! macros/matchit.vim
+endif
 
 " Multipurpose Tab key
 function! InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<tab>"
-	else
-		return "\<c-p>"
-	endif
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
@@ -135,7 +179,7 @@ inoremap <s-tab> <c-n>
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+          \ | wincmd p | diffthis
 endif
 
 " Unicode lambdas

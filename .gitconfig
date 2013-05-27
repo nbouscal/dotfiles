@@ -31,3 +31,5 @@
 
 [merge]
     tool = vimdiff
+[core]
+    editor = /usr/local/bin/vim
