@@ -1,5 +1,5 @@
-. ~/.zsh/git_aliases
-. ~/.zsh/functions
+. ~/dotfiles/.zsh/git_aliases
+. ~/dotfiles/.zsh/functions
 
 HISTFILE=~/.zsh/history
 HISTSIZE=10000
@@ -13,7 +13,7 @@ autoload -Uz compinit
 compinit
 
 source ~/.antigen/antigen.zsh
-antigen-use oh-my-zsh
+antigen-lib
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-theme nathan
 antigen-apply
