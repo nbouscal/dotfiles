@@ -9,7 +9,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-fugitive'
@@ -17,10 +16,14 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-ragtag'
 Bundle 'kana/vim-smartinput'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'sjl/gundo.vim'
 Bundle 'mattn/zencoding-vim'
+Bundle 'kien/ctrlp.vim'
 
 " Basic settings
 set hidden
