@@ -136,6 +136,8 @@ function! MapCR()
 endfunction
 call MapCR()
 
+cnoremap w!! %!sudo tee %
+
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
