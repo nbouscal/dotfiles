@@ -9,8 +9,13 @@ bindkey -v
 
 zstyle :compinstall filename '/home/nathan/.zshrc'
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 autoload -Uz compinit
 compinit
+
+unsetopt correct_all
+setopt correct
 
 source ~/.antigen/antigen.zsh
 antigen-use oh-my-zsh
