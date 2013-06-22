@@ -133,6 +133,8 @@ nnoremap $ g$
 nnoremap go o<Esc>k
 nnoremap gO O<Esc>j
 
+nnoremap <leader>l :ls<cr>:b<space>
+
 function! MapCR()
     nnoremap <cr> :nohlsearch<cr>
 endfunction
