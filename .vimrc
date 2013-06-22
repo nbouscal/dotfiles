@@ -188,7 +188,6 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" Unicode lambdas
-au VimEnter * syntax keyword Statement lambda conceal cchar=λ containedin=ALL
-au VimEnter * hi! link Conceal Statement
-au VimEnter * set conceallevel=2
+:inoremap <C-l> <C-v>u3bb<Space>
+:inoremap <C-f> <C-v>u192<Space>
+:inoremap <C-t> <C-v>u2192<Space>
