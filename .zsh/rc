@@ -30,3 +30,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
+
+# 256color for tmux
+[ -n "$TMUX" ] && export TERM=screen-256color
+export URBIT_HOME=/Users/nathan/urbit/urb
