@@ -26,8 +26,9 @@ antigen-apply
 
 PATH="$PATH:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin"
 
-export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+chruby ruby-2.0.0
 
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
