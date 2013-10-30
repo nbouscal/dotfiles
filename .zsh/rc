@@ -24,6 +24,7 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-theme nathan
 antigen-apply
 
+PATH="$PATH:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin"
 
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
