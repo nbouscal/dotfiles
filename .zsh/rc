@@ -1,4 +1,5 @@
 . ~/dotfiles/.zsh/git_aliases
+. ~/dotfiles/.zsh/aliases
 . ~/dotfiles/.zsh/functions
 
 HISTFILE=~/.zsh/history
