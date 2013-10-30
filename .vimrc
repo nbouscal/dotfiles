@@ -38,7 +38,7 @@ set history=1000
 set ruler
 set number
 set numberwidth=3
-set foldcolumn=1 
+set foldcolumn=1
 set foldenable
 set cmdheight=2
 set laststatus=2
@@ -159,17 +159,17 @@ map <leader>v :view %%
 map <Leader>u :GundoToggle<CR>
 
 " Command-T keymaps
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
+" map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+" map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
+" map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+" map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+" map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+" map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+" map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+" map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+" map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
+" map <leader>gr :topleft :split config/routes.rb<cr>
+" map <leader>gg :topleft 100 :split Gemfile<cr>
 
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
     runtime! macros/matchit.vim
