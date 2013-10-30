@@ -70,9 +70,9 @@ set ignorecase smartcase
 " Indentation
 set autoindent
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set shiftround
 
 autocmd filetype make setlocal ts=8 sts=8 sw=8 noexpandtab
