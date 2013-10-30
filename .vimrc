@@ -29,6 +29,7 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
 Bundle 'bitc/vim-hdevtools'
 
@@ -126,7 +127,6 @@ nnoremap <silent> ]b :bnext<cr>
 nnoremap <silent> [B :bfirst<cr>
 nnoremap <silent> ]B :blast<cr>
 
-imap <c-c> <esc>
 nnoremap <leader><leader> <c-^>
 nnoremap Y y$
 nnoremap & :&&<CR>
