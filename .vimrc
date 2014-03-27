@@ -198,6 +198,16 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-:inoremap <C-l> <C-v>u3bb<Space>
-:inoremap <C-f> <C-v>u192<Space>
-:inoremap <C-t> <C-v>u2192<Space>
+inoremap <C-l> <C-v>u3bb<Space>
+inoremap <C-f> <C-v>u192<Space>
+inoremap <C-t> <C-v>u2192<Space>
+
+imap <buffer> \forall ∀
+imap <buffer> \to →
+imap <buffer> \lambda λ
+imap <buffer> \Sigma Σ
+imap <buffer> \exists ∃
+imap <buffer> \equiv ≡
+imap <buffer> \nat ℕ
+imap <buffer> \times ×
+imap <buffer> \circ ◦

@@ -24,7 +24,7 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-theme nathan
 antigen-apply
 
-PATH="$PATH:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin"
+PATH="/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:$PATH"
 
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
@@ -36,3 +36,8 @@ bindkey '\e[B' history-search-forward
 # 256color for tmux
 [ -n "$TMUX" ] && export TERM=screen-256color
 export URBIT_HOME=/Users/nathan/urbit/urb
+
+source /Users/nathan/.nix-profile/etc/profile.d/nix.sh
+
+HASKELL_CODE_DIR=~/soostone
+SOOSTONE_CODE_DIR=~/soostone
