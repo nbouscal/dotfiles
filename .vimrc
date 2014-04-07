@@ -148,7 +148,7 @@ nnoremap gO O<Esc>j
 nnoremap <leader>l :ls<cr>:b<space>
 
 function! MapCR()
-    nnoremap <cr> :nohlsearch<cr>
+    nnoremap <silent> <cr> :nohlsearch<cr>
 endfunction
 call MapCR()
 
