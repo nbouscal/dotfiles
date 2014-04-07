@@ -35,6 +35,8 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
 Bundle 'bitc/vim-hdevtools'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'nbouscal/vim-stylish-haskell'
 
 " Basic settings
 set hidden
@@ -211,3 +213,24 @@ imap <buffer> \equiv ≡
 imap <buffer> \nat ℕ
 imap <buffer> \times ×
 imap <buffer> \circ ◦
+
+
+function! s:FindCabalSandbox()
+   let l:sandbox    = finddir('.cabal-sandbox', './;../')
+   let l:absSandbox = fnamemodify(l:sandbox, ':p')
+   return l:absSandbox
+endfunction
+
+function! s:FindCabalSandboxPackageConf()
+   return glob(s:FindCabalSandbox() . '*-packages.conf.d')
+endfunction
+
+let g:hdevtools_options = '-g-package-conf=' . s:FindCabalSandboxPackageConf()
+let g:hdevtools_options .= ' -g-isrc'
+
+map <leader>t :HdevtoolsType<cr>
+
+let hs_highlight_boolean = 1
+let hs_highlight_types = 1
+let hs_highlight_more_types = 1
+let hs_highlight_debug = 1
