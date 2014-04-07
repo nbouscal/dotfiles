@@ -9,6 +9,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'nbouscal/vim-stylish-haskell'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-fugitive'
@@ -18,12 +19,12 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-dispatch'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'sjl/gundo.vim'
-Bundle 'mattn/emmet-vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'rking/ag.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'wikitopian/hardmode'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-line'
@@ -35,8 +36,9 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
 Bundle 'bitc/vim-hdevtools'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'nbouscal/vim-stylish-haskell'
+Bundle 'laurilehmijoki/haskellmode-vim'
+Bundle 'Twinside/vim-hoogle'
+Bundle 'dahu/SearchParty'
 
 " Basic settings
 set hidden
@@ -63,7 +65,8 @@ filetype plugin indent on
 syntax on
 
 " Window sizing
-set winwidth=80
+set winwidth=78
+set textwidth=78
 set winheight=5
 set winminheight=5
 
@@ -81,11 +84,15 @@ set softtabstop=2
 set shiftwidth=2
 set shiftround
 
-autocmd filetype make setlocal ts=8 sts=8 sw=8 noexpandtab
-autocmd filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd filetype html setlocal ts=2 sts=2 sw=2 expandtab
-autocmd filetype css setlocal ts=2 sts=2 sw=2 expandtab
+augroup filetypes
+  au!
+
+  autocmd filetype make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd filetype html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd filetype css setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
 
 " Backup and undo storage
 set backup
@@ -105,10 +112,11 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+set tags+="/Users/nbouscal/soostone/tags"
+
 " Autocmds
 augroup vimrcEx
   au!
-  autocmd FileType text setlocal textwidth=78
   " Jump to last cursor position unless it's invalid or in an event handler
   autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -215,6 +223,12 @@ imap <buffer> \times ×
 imap <buffer> \circ ◦
 
 
+map <leader>t :HdevtoolsType<cr>
+
+let g:haddock_browser="open"
+let g:haddock_browser_callformat = "%s %s"
+
+
 function! s:FindCabalSandbox()
    let l:sandbox    = finddir('.cabal-sandbox', './;../')
    let l:absSandbox = fnamemodify(l:sandbox, ':p')
@@ -225,11 +239,28 @@ function! s:FindCabalSandboxPackageConf()
    return glob(s:FindCabalSandbox() . '*-packages.conf.d')
 endfunction
 
-let g:hdevtools_options = '-g-package-conf=' . s:FindCabalSandboxPackageConf()
-let g:hdevtools_options .= ' -g-isrc'
+function! s:HaskellSourceDir()
+   return fnamemodify(s:FindCabalSandbox(), ':h:h') . '/src'
+endfunction
 
-map <leader>t :HdevtoolsType<cr>
+function! s:HdevtoolsSocketFile()
+   return s:HaskellSourceDir() . '/.hdevtools.sock'
+endfunction
 
+function! s:InitHdevtoolsVars()
+   let g:hdevtools_options  = '-g-package-conf=' . s:FindCabalSandboxPackageConf()
+   let g:hdevtools_options .= ' -g-i'. s:HaskellSourceDir()
+   let g:hdevtools_options .= ' -g-Wall -g-Werror -g-Wno-warn-unused-binds'
+   let g:hdevtools_options .= ' --socket=' . s:HdevtoolsSocketFile()
+endfunction
+
+augroup hdevtools
+  au!
+  autocmd! Bufenter *.hs :call s:InitHdevtoolsVars()
+augroup END
+
+
+let hs_highlight_delimiters = 1
 let hs_highlight_boolean = 1
 let hs_highlight_types = 1
 let hs_highlight_more_types = 1

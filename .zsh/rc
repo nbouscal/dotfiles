@@ -26,18 +26,12 @@ antigen-apply
 
 PATH="/Users/nathan/.cabal-sandbox/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:$PATH"
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-chruby ruby-2.0.0
-
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
 # 256color for tmux
 [ -n "$TMUX" ] && export TERM=screen-256color
 export URBIT_HOME=/Users/nathan/urbit/urb
-
-source /Users/nathan/.nix-profile/etc/profile.d/nix.sh
 
 HASKELL_CODE_DIR=~/soostone
 SOOSTONE_CODE_DIR=~/soostone
