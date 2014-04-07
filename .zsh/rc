@@ -24,7 +24,7 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-theme nathan
 antigen-apply
 
-PATH="/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:$PATH"
+PATH="/Users/nathan/.cabal-sandbox/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:$PATH"
 
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
