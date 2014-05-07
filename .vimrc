@@ -4,41 +4,44 @@ set nocompatible
 
 " Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'nbouscal/vim-stylish-haskell'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-dispatch'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'sjl/gundo.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'wikitopian/hardmode'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-line'
-Bundle 'lucapette/vim-textobj-underscore'
-Bundle 'kana/vim-textobj-entire'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/syntastic'
-Bundle 'bitc/vim-hdevtools'
-Bundle 'laurilehmijoki/haskellmode-vim'
-Bundle 'Twinside/vim-hoogle'
-Bundle 'dahu/SearchParty'
+Plugin 'nbouscal/vim-stylish-haskell'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-dispatch'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'sjl/gundo.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'wikitopian/hardmode'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
+Plugin 'lucapette/vim-textobj-underscore'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/syntastic'
+Plugin 'bitc/vim-hdevtools'
+Plugin 'laurilehmijoki/haskellmode-vim'
+Plugin 'Twinside/vim-hoogle'
+Plugin 'dahu/SearchParty'
+
+call vundle#end()
+filetype plugin indent on
 
 " Basic settings
 set hidden
@@ -61,7 +64,6 @@ set scrolloff=3
 set list listchars=tab:▸\ ,trail:·
 set autoread
 set fileformats+=mac
-filetype plugin indent on
 syntax on
 
 " Window sizing
