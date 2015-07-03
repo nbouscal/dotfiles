@@ -5,6 +5,7 @@
 .rvmrc
 .viminfo
 .recently-used
+add-sources.sh.local
 
 .Trash/
 Applications/
@@ -38,6 +39,8 @@ target/
 .ghc/
 .lighttable/
 .cabal/
+.cabal-sandbox/
+dist/
 .calibre_calibre GUI.lock
 .fontconfig/
 .Xauthority

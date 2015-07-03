@@ -24,14 +24,19 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-theme nathan
 antigen-apply
 
-PATH="/Users/nathan/.cabal-sandbox/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:$PATH"
+PATH="/Users/nathan/.cabal-sandbox/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:/usr/local/bin:$PATH"
 
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
-# 256color for tmux
-[ -n "$TMUX" ] && export TERM=screen-256color
-export URBIT_HOME=/Users/nathan/urbit/urb
-
-HASKELL_CODE_DIR=~/soostone
-SOOSTONE_CODE_DIR=~/soostone
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

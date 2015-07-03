@@ -28,6 +28,7 @@
     ra = !git r --all
     l = "!. ~/.githelpers && pretty_git_log"
     la = !git l --all
+    conflicts = !git diff --name-only --diff-filter=U | less -FXRS
 
 [merge]
     tool = vimdiff

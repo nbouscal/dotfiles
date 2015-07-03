@@ -24,7 +24,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'wikitopian/hardmode'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
@@ -35,10 +35,17 @@ Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/syntastic'
-Plugin 'bitc/vim-hdevtools'
+" Plugin 'bitc/vim-hdevtools'
 Plugin 'laurilehmijoki/haskellmode-vim'
 Plugin 'Twinside/vim-hoogle'
 Plugin 'dahu/SearchParty'
+Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'honza/vim-snippets'
+" Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -171,7 +178,10 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 map <leader>v :view %%
 
-map <Leader>u :GundoToggle<CR>
+map <leader>u :GundoToggle<cr>
+map <leader>d :DiffOrig<cr>
+
+let g:UltiSnipsExpandTrigger="<c-J>"
 
 " Command-T keymaps
 " map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
@@ -191,16 +201,16 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 
 " Multipurpose Tab key
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<tab>"
+"     else
+"         return "\<c-p>"
+"     endif
+" endfunction
+" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+" inoremap <s-tab> <c-n>
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -225,7 +235,7 @@ imap <buffer> \times ×
 imap <buffer> \circ ◦
 
 
-map <leader>t :HdevtoolsType<cr>
+" map <leader>t :HdevtoolsType<cr>
 
 let g:haddock_browser="open"
 let g:haddock_browser_callformat = "%s %s"
@@ -267,3 +277,5 @@ let hs_highlight_boolean = 1
 let hs_highlight_types = 1
 let hs_highlight_more_types = 1
 let hs_highlight_debug = 1
+
+colorscheme solarized
