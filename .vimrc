@@ -48,6 +48,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'prophittcorey/vim-flay'
 Plugin 'wakatime/vim-wakatime'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 call vundle#end()
 filetype plugin indent on
