@@ -46,6 +46,8 @@ Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'SirVer/ultisnips'
 " Plugin 'honza/vim-snippets'
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'prophittcorey/vim-flay'
+Plugin 'wakatime/vim-wakatime'
 
 call vundle#end()
 filetype plugin indent on
