@@ -65,7 +65,7 @@ set cursorline
 set backspace=indent,eol,start
 set nrformats-=octal
 set wildmenu
-set wildmode=list,full
+set wildmode=list:longest,full
 set scrolljump=5
 set scrolloff=3
 set list listchars=tab:▸\ ,trail:·
