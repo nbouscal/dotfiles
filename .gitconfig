@@ -35,3 +35,5 @@
 [core]
     editor = /usr/local/bin/vim
     excludesfile = /Users/nathan/.gitignore
+[push]
+    default = simple
