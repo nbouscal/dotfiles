@@ -1,0 +1,9 @@
+\set QUIET 1
+\set COMP_KEYWORD_CASE upper
+\timing
+\x auto
+\pset null ¤
+\set VERBOSITY verbose
+\set HISTCONTROL ignoreboth
+\set HISTSIZE
+\unset QUIET
