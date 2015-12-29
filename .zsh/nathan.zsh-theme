@@ -1,7 +1,7 @@
 # ZSH Theme - Preview: http://cl.ly/350F0F0k1M2y3A2i3p1S
 
 PROMPT='%(!.%{%F{red}%}λ%{$reset_color%}.λ) '
-RPROMPT='%~/ $(minutes_since_last_commit) $(git_prompt_info) $(current_rev)%{$reset_color%}'
+RPROMPT='%~/ $(minutes_since_last_commit) $(git_prompt_info) $(current_rev)%{$reset_color%} %{%F{10}%}[%*]%{%f%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
