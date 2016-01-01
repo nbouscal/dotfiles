@@ -76,6 +76,7 @@ set autoread
 set fileformats+=mac
 syntax on
 set synmaxcol=250
+set clipboard^=unnamed
 
 " Window sizing
 set winwidth=78
