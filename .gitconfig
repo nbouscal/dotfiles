@@ -37,3 +37,5 @@
     excludesfile = /Users/nathan/.gitignore
 [push]
     default = simple
+[rerere]
+	enabled = true
