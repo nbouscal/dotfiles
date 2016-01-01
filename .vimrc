@@ -75,6 +75,7 @@ set list listchars=tab:▸\ ,trail:·
 set autoread
 set fileformats+=mac
 syntax on
+set synmaxcol=250
 
 " Window sizing
 set winwidth=78
