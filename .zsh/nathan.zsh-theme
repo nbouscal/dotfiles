@@ -1,7 +1,7 @@
 # ZSH Theme - Preview: http://cl.ly/350F0F0k1M2y3A2i3p1S
 
 PROMPT='%(!.%{%F{red}%}λ%{$reset_color%}.λ) '
-RPROMPT='%~/ $(minutes_since_last_commit) $(git_prompt_info) $(current_rev)%{$reset_color%} %{%F{10}%}[%*]%{%f%}'
+RPROMPT='%~/$(git_prompt)$(current_time)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -11,6 +11,16 @@ git_custom_status() {
     if [ -n "$cb" ]; then
         echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
     fi
+}
+
+function git_prompt {
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    echo " $(minutes_since_last_commit) $(git_prompt_info) $(current_rev)%{$reset_color%}"
+  fi
+}
+
+function current_time {
+  echo " %{%F{10}%}[%*]%{%f%}"
 }
 
 function minutes_since_last_commit {
