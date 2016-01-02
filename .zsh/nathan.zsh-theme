@@ -15,7 +15,11 @@ git_custom_status() {
 
 function git_prompt {
   if git rev-parse --git-dir > /dev/null 2>&1; then
-    echo " $(minutes_since_last_commit) $(git_prompt_info) $(current_rev)%{$reset_color%}"
+    if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal") == 0 ]]; then
+      echo " $(minutes_since_last_commit) $(git_prompt_info) $(current_rev)%{$reset_color%}"
+    else
+      echo " %{%F{124}%}(no commits)%{%f%}"
+    fi
   fi
 }
 
