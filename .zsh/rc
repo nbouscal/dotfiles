@@ -19,10 +19,10 @@ unsetopt correct_all
 setopt correct
 
 source ~/.antigen/antigen.zsh
-antigen-use oh-my-zsh
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-theme nathan
-antigen-apply
+antigen use oh-my-zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme nathan
+antigen apply
 
 PATH="/Users/nathan/.cabal-sandbox/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:/usr/local/bin:$PATH"
 

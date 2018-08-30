@@ -7,5 +7,5 @@
 \pset null ¤
 \set VERBOSITY verbose
 \set HISTCONTROL ignoreboth
-\set HISTSIZE
+\set HISTSIZE 20000
 \unset QUIET

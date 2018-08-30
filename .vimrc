@@ -34,11 +34,12 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 " Plugin 'bitc/vim-hdevtools'
-Plugin 'laurilehmijoki/haskellmode-vim'
-Plugin 'Twinside/vim-hoogle'
+" Plugin 'laurilehmijoki/haskellmode-vim'
+" Plugin 'Twinside/vim-hoogle'
 " Plugin 'dahu/SearchParty'
+Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'kchmck/vim-coffee-script'
@@ -49,6 +50,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'prophittcorey/vim-flay'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'idris-hackers/idris-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -102,10 +104,13 @@ augroup filetypes
   au!
 
   autocmd filetype make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd filetype asm setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd filetype html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd filetype css setlocal ts=2 sts=2 sw=2 expandtab
+
+  autocmd filetype rust map <buffer> <leader>t :w<cr>\|:!cargo run<cr>
 augroup END
 
 " Backup and undo storage
@@ -125,8 +130,6 @@ map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
-
-set tags+="/Users/nbouscal/soostone/tags"
 
 " Autocmds
 augroup vimrcEx
@@ -244,7 +247,6 @@ imap <buffer> \circ ◦
 
 let g:haddock_browser="open"
 let g:haddock_browser_callformat = "%s %s"
-
 
 function! s:FindCabalSandbox()
    let l:sandbox    = finddir('.cabal-sandbox', './;../')
