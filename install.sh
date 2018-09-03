@@ -7,7 +7,7 @@ git clone git://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 mkdir ~/.zsh
 
 ln -s ~/dotfiles/.antigen ~/.antigen
-ln -s ~/dotfiles/.zsh/nathan.zsh-theme ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/themes/nathan.zsh-theme
+ln -s ~/dotfiles/.zsh/nathan.zsh-theme ~/.antigen/bundles/robbyrussell/oh-my-zsh/themes/nathan.zsh-theme
 
 ln -s ~/dotfiles/.psqlrc ~/.psqlrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
