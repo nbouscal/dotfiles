@@ -16,3 +16,4 @@ ln -s ~/dotfiles/.zprofile ~/.zprofile
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.githelpers ~/.githelpers
+ln -s ~/dotfiles/.ghci ~/.ghci
