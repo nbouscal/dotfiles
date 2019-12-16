@@ -1,7 +1,4 @@
-. ~/dotfiles/.zsh/git_aliases
-. ~/dotfiles/.zsh/aliases
-. ~/dotfiles/.zsh/functions
-
+export EDITOR=vim
 HISTFILE=~/.zsh/history
 HISTSIZE=10000
 SAVEHIST=1000000
@@ -24,7 +21,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme nathan
 antigen apply
 
-PATH="/Users/nathan/.cabal-sandbox/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:/usr/local/bin:$PATH"
+PATH="/Users/nathan/.cabal/bin:/Users/nathan/Library/Haskell/bin:/Users/nathan/bin:/usr/local/bin:$PATH"
 
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
@@ -40,3 +37,13 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+export DISABLE_SPRING=1
+
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+# source ~/.cargo/env
+
+. ~/dotfiles/.zsh/git_aliases
+. ~/dotfiles/.zsh/aliases
+. ~/dotfiles/.zsh/functions
