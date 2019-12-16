@@ -22,7 +22,7 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'sjl/gundo.vim'
+" Plugin 'sjl/gundo.vim'
 " Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'wikitopian/hardmode'
@@ -44,16 +44,37 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'prophittcorey/vim-flay'
+" Plugin 'prophittcorey/vim-flay'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'idris-hackers/idris-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'hashivim/vim-terraform'
+Plugin 'chr4/nginx.vim'
+Plugin 'vmchale/dhall-vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
-filetype plugin indent on
+
+" vim-plug
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+
+call plug#end()
 
 " Basic settings
 set hidden
@@ -81,7 +102,7 @@ set synmaxcol=250
 set clipboard^=unnamed
 
 " Window sizing
-set winwidth=78
+set winwidth=84
 set textwidth=78
 set winheight=5
 set winminheight=5
@@ -103,6 +124,8 @@ set shiftround
 augroup filetypes
   au!
 
+  autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+
   autocmd filetype make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd filetype asm setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -111,6 +134,31 @@ augroup filetypes
   autocmd filetype css setlocal ts=2 sts=2 sw=2 expandtab
 
   autocmd filetype rust map <buffer> <leader>t :w<cr>\|:!cargo run<cr>
+
+  autocmd filetype haskell,dhall imap <buffer> \forall ∀
+  autocmd filetype haskell,dhall imap <buffer> \to →
+  autocmd filetype haskell,dhall imap <buffer> \lambda λ
+  autocmd filetype haskell,dhall imap <buffer> \Sigma Σ
+  autocmd filetype haskell,dhall imap <buffer> \exists ∃
+  autocmd filetype haskell,dhall imap <buffer> \equiv ≡
+  autocmd filetype haskell,dhall imap <buffer> \nat ℕ
+  autocmd filetype haskell,dhall imap <buffer> \times ×
+  autocmd filetype haskell,dhall imap <buffer> \circ ◦
+  autocmd filetype haskell,dhall imap <buffer> \merge ⫽
+  autocmd filetype haskell,dhall imap <buffer> \meet ∧
+  autocmd filetype haskell,dhall imap <buffer> \Meet ⩓
+
+  autocmd filetype dhall map <leader>df :%!dhall format<cr>
+
+
+  " LanguageClient mappings only for languages we have LSP servers for
+  autocmd filetype haskell,rust nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
+  autocmd filetype haskell,rust nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+
+  if executable('grip')
+    autocmd filetype markdown nnoremap <buffer> <leader>om :Dispatch grip -b %<cr>
+  endif
 augroup END
 
 " Backup and undo storage
@@ -130,6 +178,11 @@ map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
+
+imap <Left> <Nop>
+imap <Right> <Nop>
+imap <Up> <Nop>
+imap <Down> <Nop>
 
 " Autocmds
 augroup vimrcEx
@@ -170,8 +223,6 @@ nnoremap $ g$
 nnoremap go o<Esc>k
 nnoremap gO O<Esc>j
 
-nnoremap <leader>l :ls<cr>:b<space>
-
 function! MapCR()
     nnoremap <silent> <cr> :nohlsearch<cr>
 endfunction
@@ -186,12 +237,12 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 map <leader>v :view %%
 
-map <leader>u :GundoToggle<cr>
-map <leader>d :DiffOrig<cr>
+" map <leader>u :GundoToggle<cr>
+" map <leader>d :DiffOrig<cr>
 
-let g:UltiSnipsExpandTrigger="<c-J>"
+" let g:UltiSnipsExpandTrigger="<c-J>"
 
-" Command-T keymaps
+" Command-T Rails keymaps
 " map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 " map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
 " map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
@@ -203,6 +254,32 @@ let g:UltiSnipsExpandTrigger="<c-J>"
 " map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
 " map <leader>gr :topleft :split config/routes.rb<cr>
 " map <leader>gg :topleft 100 :split Gemfile<cr>
+
+
+"""""""
+" FZF "
+"""""""
+
+let g:fzf_buffers_jump = 1
+
+map <leader>gf :Files<cr>
+map <leader>gg :GFiles<cr>
+map <leader>gh :History<cr>
+
+map <leader>sf :Rg 
+map <leader>sl :Lines 
+map <leader>sb :BLines 
+
+map <leader>: :History:<cr>
+map <leader>/ :History/<cr>
+" map <leader>sn :Snippets<cr>
+
+map <leader>ca :Commits<cr>
+map <leader>cb :BCommits<cr>
+
+nnoremap <leader>l :Buffers<cr>
+
+"""
 
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
     runtime! macros/matchit.vim
@@ -232,51 +309,40 @@ inoremap <C-l> <C-v>u3bb<Space>
 inoremap <C-f> <C-v>u192<Space>
 inoremap <C-t> <C-v>u2192<Space>
 
-imap <buffer> \forall ∀
-imap <buffer> \to →
-imap <buffer> \lambda λ
-imap <buffer> \Sigma Σ
-imap <buffer> \exists ∃
-imap <buffer> \equiv ≡
-imap <buffer> \nat ℕ
-imap <buffer> \times ×
-imap <buffer> \circ ◦
-
-
 " map <leader>t :HdevtoolsType<cr>
 
-let g:haddock_browser="open"
-let g:haddock_browser_callformat = "%s %s"
+" let g:haddock_browser="open"
+" let g:haddock_browser_callformat = "%s %s"
 
-function! s:FindCabalSandbox()
-   let l:sandbox    = finddir('.cabal-sandbox', './;../')
-   let l:absSandbox = fnamemodify(l:sandbox, ':p')
-   return l:absSandbox
-endfunction
+" function! s:FindCabalSandbox()
+"    let l:sandbox    = finddir('.cabal-sandbox', './;../')
+"    let l:absSandbox = fnamemodify(l:sandbox, ':p')
+"    return l:absSandbox
+" endfunction
 
-function! s:FindCabalSandboxPackageConf()
-   return glob(s:FindCabalSandbox() . '*-packages.conf.d')
-endfunction
+" function! s:FindCabalSandboxPackageConf()
+"    return glob(s:FindCabalSandbox() . '*-packages.conf.d')
+" endfunction
 
-function! s:HaskellSourceDir()
-   return fnamemodify(s:FindCabalSandbox(), ':h:h') . '/src'
-endfunction
+" function! s:HaskellSourceDir()
+"    return fnamemodify(s:FindCabalSandbox(), ':h:h') . '/src'
+" endfunction
 
-function! s:HdevtoolsSocketFile()
-   return s:HaskellSourceDir() . '/.hdevtools.sock'
-endfunction
+" function! s:HdevtoolsSocketFile()
+"    return s:HaskellSourceDir() . '/.hdevtools.sock'
+" endfunction
 
-function! s:InitHdevtoolsVars()
-   let g:hdevtools_options  = '-g-package-conf=' . s:FindCabalSandboxPackageConf()
-   let g:hdevtools_options .= ' -g-i'. s:HaskellSourceDir()
-   let g:hdevtools_options .= ' -g-Wall -g-Werror -g-Wno-warn-unused-binds'
-   let g:hdevtools_options .= ' --socket=' . s:HdevtoolsSocketFile()
-endfunction
+" function! s:InitHdevtoolsVars()
+"    let g:hdevtools_options  = '-g-package-conf=' . s:FindCabalSandboxPackageConf()
+"    let g:hdevtools_options .= ' -g-i'. s:HaskellSourceDir()
+"    let g:hdevtools_options .= ' -g-Wall -g-Werror -g-Wno-warn-unused-binds'
+"    let g:hdevtools_options .= ' --socket=' . s:HdevtoolsSocketFile()
+" endfunction
 
-augroup hdevtools
-  au!
-  autocmd! Bufenter *.hs :call s:InitHdevtoolsVars()
-augroup END
+" augroup hdevtools
+"   au!
+"   autocmd! Bufenter *.hs :call s:InitHdevtoolsVars()
+" augroup END
 
 
 let hs_highlight_delimiters = 1
@@ -287,10 +353,21 @@ let hs_highlight_debug = 1
 
 colorscheme solarized
 
+let g:hlint_options = "--hint=.githooks/hlint.yaml"
+let g:ale_haskell_hlint_options = "--hint=.githooks/hlint.yaml"
+let g:stylish_haskell_options = ["-c .githooks/stylish-haskell.yaml"]
 
-" Syntastic settings
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:ale_linters = { 'haskell': ['hlint'] }
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'javascript': ['prettier'], 'typescript': ['prettier'], 'haskell': [] }
+let g:ale_fix_on_save = 1
+
+
+" LSP servers
+
+set hidden
+
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'haskell': ['cabal', 'exec', '--', 'ghcide', '--lsp'],
+    \ }
