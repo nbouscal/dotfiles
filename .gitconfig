@@ -32,12 +32,17 @@
 
 [merge]
     tool = vimdiff
+	conflictstyle = diff3
 [core]
-    editor = /usr/local/bin/vim
+    editor = /usr/bin/vim
     excludesfile = /Users/nathan/.gitignore
+	hooksPath = .githooks
 [push]
     default = simple
+	recurseSubmodules = on-demand
 [rerere]
 	enabled = true
 [commit]
 	gpgsign = true
+[submodule]
+	recurse = true

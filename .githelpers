@@ -12,7 +12,7 @@
 
 HASH="%C(yellow)%h%Creset"
 RELATIVE_TIME="%Cgreen(%ar)%Creset"
-AUTHOR="%G? %C(bold blue)<%an>%Creset"
+AUTHOR="%C(bold blue)<%an>%Creset"
 REFS="%C(red)%d%Creset"
 SUBJECT="%s"
 
@@ -38,4 +38,3 @@ pretty_git_log() {
         # Page only if we need to
         less -FXRS
 }
-
