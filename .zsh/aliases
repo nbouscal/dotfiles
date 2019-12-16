@@ -8,3 +8,20 @@ alias cco='cabal configure'
 alias ccl='cabal clean'
 alias cb='cabal build | grep -v "^Loading package"'
 alias cmi='cabal-meta install'
+alias cr='cabal repl'
+
+alias sd='sqitch deploy'
+alias sr='sqitch rebase'
+alias sdr='sqitch deploy && sqitch revert HEAD^'
+
+dump() {
+  pg_dump -s -n "$1" -d firefly_development > structure.sql
+}
+
+alias sdb='sd && dump bookkeeper'
+alias srb='sr && dump bookkeeper'
+alias sdrb='sdr && dump bookkeeper'
+
+if (( $+commands[exa] )); then
+  alias ls='exa'
+fi
