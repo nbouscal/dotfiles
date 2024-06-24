@@ -1,0 +1,18 @@
+\set QUIET 1
+\set COMP_KEYWORD_CASE upper
+\set PROMPT1 '%[%033[92m%][%/]%[%033[0m%] %# '
+\set PROMPT2 '%[%033[92m%][%/]%[%033[0m%] %# %[%033[91m%]...%[%033[0m%] '
+\timing
+\pset null ¤
+\set VERBOSITY verbose
+\set HISTCONTROL ignoreboth
+\set HISTSIZE 20000
+
+\pset linestyle unicode
+\pset border 2
+
+\set x '\\setenv PAGER less'
+\set xx '\\setenv PAGER \'pspg -bX --no-mouse --no-commandbar --no-topbar\''
+:xx
+
+\unset QUIET

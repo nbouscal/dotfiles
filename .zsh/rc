@@ -1,0 +1,42 @@
+. ~/dotfiles/.zsh/git_aliases
+. ~/dotfiles/.zsh/aliases
+. ~/dotfiles/.zsh/functions
+
+HISTFILE=~/.zsh/history
+HISTSIZE=10000
+SAVEHIST=1000000
+setopt autocd notify
+bindkey -v
+
+zstyle :compinstall filename '/home/naia/.zshrc'
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+autoload -Uz compinit
+compinit
+
+unsetopt correct_all
+setopt correct
+
+source ~/.antigen/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme naia
+antigen apply
+
+PATH="/Users/naia/.cabal-sandbox/bin:/Users/naia/Library/Haskell/bin:/Users/naia/bin:/usr/local/bin:$PATH"
+
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

@@ -1,0 +1,9 @@
+alias be='bundle exec'
+alias bi='bundle install'
+alias v='vim'
+
+alias ci='cabal install --only-dependencies'
+alias cco='cabal configure'
+alias ccl='cabal clean'
+alias cb='cabal build | grep -v "^Loading package"'
+alias cmi='cabal-meta install'
